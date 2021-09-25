@@ -1,0 +1,22 @@
+install typescript in dir
+-> npm i typescript ts-node-dev express @types/express
+
+generate tsc config file in dir
+-> tsc --init
+
+edit package.json files to start script
+
+add the Dockerfiles, add the skaffold files
+run -> skaffold dev
+
+add the ingress-srv file, install ingress with
+-> kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.0.0/deploy/static/provider/cloud/deploy.yaml
+
+edit the /etc/hosts file with the host name in the ingress file (127.0.0.1 example.com)
+-> code /etc/hosts
+
+chrome will not let u access the file normally so you will need to type -> thisisunsafe 
+
+run cmd for creating secret pods in kubernetes
+kubectl create secret generic [pod-name] --from-literal=[key]=[value].. for example 👇🏼
+-> kubectl create secret generic jwt-secret --from-literal=JWT_KEY=secretjwtsecret
