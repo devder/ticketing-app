@@ -1,3 +1,4 @@
+# deployment
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -16,11 +17,14 @@ spec:
         - name: auth
           image: devder/auth
           env:
+            - name: MONGO_URI
+              value: "mongodb://auth-mongo-srv:27017/auth" # hard coded
             - name: JWT_KEY
               valueFrom:
                 secretKeyRef:
                   name: jwt-secret
                   key: JWT_KEY
+# cluster-ip service
 ---
 apiVersion: v1
 kind: Service

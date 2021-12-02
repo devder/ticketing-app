@@ -2,9 +2,8 @@ import express, { Request, Response } from "express";
 const router = express.Router();
 import jwt from "jsonwebtoken";
 import { body } from "express-validator";
-import { validateRequest } from "../middlewares/validate-request";
+import { validateRequest, BadRequestError } from "@devder-tickets/common";
 import { User } from "../models/user";
-import { BadRequestError } from "../errors/bad-request-error";
 import { Password } from "../services/password";
 
 router.post(
@@ -29,7 +28,7 @@ router.post(
 
     const userJWT = jwt.sign({ id: exisitingUser.id, email: exisitingUser.email }, process.env.JWT_KEY!);
     req.session = { jwt: userJWT };
-    res.status(201).json(exisitingUser);
+    res.status(200).json(exisitingUser);
   }
 );
 

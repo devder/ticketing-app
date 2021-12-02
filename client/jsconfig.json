@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src"
+  }
+}
+
+//this file helps us eliminate ../../ when importing

@@ -1,0 +1,21 @@
+{
+  "name": "client",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "export SET NODE_OPTIONS=--openssl-legacy-provider && next dev",
+    "build": "export SET NODE_OPTIONS=--openssl-legacy-provider && next build",
+    "start": "export SET NODE_OPTIONS=--openssl-legacy-provider && next start",
+    "lint": "next lint"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.4",
+    "bootstrap": "^5.1.1",
+    "next": "^11.1.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
+}
