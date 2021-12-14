@@ -49,7 +49,7 @@ then [note that we will write TS but publish JS]
 
 the 'pub' script in the package.json should not be used in a real app
 
-when a new service is added, build and push the docker image to docker hub,update the ingress-srv file to expose the new service
+when a new service is added, create a docker file, build and push the docker image to docker hub,update the ingress-srv file to expose the new service
 
 NATS Streaming server is used to share events between services inside our application (docs.nats.io)
 NATS is diff from NATS Streaming Server
@@ -62,3 +62,5 @@ visit localhost:8222/streaming after portforwarding to the monitoring port to se
 build NATS singleton 
 
 use __mocks__ to fake file imports, naming the fake files exactly as the original
+
+use the mongoose-update-if-current plugin for OCC (Optimistic Concurrency Control) - versioning fields in the db

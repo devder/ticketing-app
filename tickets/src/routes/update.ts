@@ -1,6 +1,12 @@
 import express, { Request, Response } from "express";
 import { body } from "express-validator";
-import { requireAuth, validateRequest, NotFoundError, NotAuthorizedError } from "@devder-tickets/common";
+import {
+  requireAuth,
+  validateRequest,
+  NotFoundError,
+  NotAuthorizedError,
+  BadRequestError,
+} from "@devder-tickets/common";
 import { Ticket } from "../models/ticket";
 import { TicketUpdatedPublisher } from "../events/publishers/ticket-updated-publisher";
 import { natsWrapper } from "../nats-wrapper";
@@ -25,6 +31,11 @@ router.put(
       throw new NotAuthorizedError();
     }
 
+    // meaning the ticket is reserved
+    if (ticket.orderId) {
+      throw new BadRequestError("Cannot edit a reserved ticket");
+    }
+
     const { title, price } = req.body;
 
     // update the ticket
@@ -40,6 +51,7 @@ router.put(
       title: ticket.title,
       price: ticket.price,
       userId: ticket.userId,
+      version: ticket.version,
     });
 
     res.json(ticket);
