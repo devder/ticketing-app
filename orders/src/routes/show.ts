@@ -1,8 +1,6 @@
 import express, { Request, Response } from "express";
-import mongoose from "mongoose";
-import { NotAuthorizedError, NotFoundError, requireAuth, validateRequest } from "@devder-tickets/common";
+import { NotAuthorizedError, NotFoundError, requireAuth } from "@devder-tickets/common";
 import { Order } from "../models/order";
-import { body } from "express-validator";
 
 const router = express.Router();
 

@@ -47,7 +47,7 @@ then [note that we will write TS but publish JS]
 -> npm publish --access public
 -> npm version patch (to update the version from the cli)
 
-the 'pub' script in the package.json should not be used in a real app
+the 'pub' script in the package.json is to help ave time with a single command
 
 when a new service is added, create a docker file, build and push the docker image to docker hub,update the ingress-srv file to expose the new service
 and the skaffold yaml file

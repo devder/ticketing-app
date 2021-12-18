@@ -1,21 +1,50 @@
 import buildClient from "api/build-client";
+import Link from "next/link";
 
-const Home = ({ currentUser }) => {
-  return <h1>You are {!currentUser && "NOT"} signed in</h1>;
+const Home = ({ tickets }) => {
+  const ticketList = tickets.map(ticket => (
+    <tr key={ticket.id}>
+      <td>{ticket.title}</td>
+      <td>{ticket.price}</td>
+      <td>
+        <Link
+          href={{
+            pathname: "/tickets/[ticketId]",
+            query: { ticketId: ticket.id },
+          }}
+          // href={`/tickets/${ticket.id}`}
+          // as="ticket-route"
+        >
+          <a>View</a>
+        </Link>
+      </td>
+    </tr>
+  ));
+
+  return (
+    <div>
+      <h1>Tickets</h1>
+      <table className="table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Link</th>
+          </tr>
+        </thead>
+        <tbody>{ticketList}</tbody>
+      </table>
+    </div>
+  );
 };
 
-export async function getServerSideProps(ctx) {
-  const {
-    data: { currentUser },
-  } = await buildClient(ctx).get("/api/users/currentuser");
-  return {
-    props: { currentUser },
-  };
-}
+export const getServerSideProps = async ctx => {
+  const { data } = await buildClient(ctx).get("/api/tickets");
+  return { props: { tickets: data } };
+};
 
-// Home.getInitialProps = async context => {
-//   const { data } = await buildClient(context).get("/api/users/currentuser");
-//   return data;
+// Home.getInitialProps = async (appContext, client, currentUser) => {
+//   const { data } = await client.get("/api/tickets");
+//   return { tickets: data };
 // };
-
 export default Home;
