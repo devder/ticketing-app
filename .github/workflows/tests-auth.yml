@@ -1,5 +1,5 @@
 # workflow name
-name: tests
+name: tests-auth
 # determine when to run this workflow
 on:
   pull_request
