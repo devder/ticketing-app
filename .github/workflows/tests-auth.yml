@@ -1,0 +1,12 @@
+# workflow name
+name: tests-auth
+# determine when to run this workflow
+on:
+  pull_request
+# specify the events that you want to run on the pull req
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: cd auth && npm install && npm run test:ci
