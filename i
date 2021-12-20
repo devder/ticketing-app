@@ -68,3 +68,9 @@ use the mongoose-update-if-current plugin for OCC (Optimistic Concurrency Contro
 
 generate stripe api secret in the pod
 -> kubectl create secret generic stripe-secret --from-literal=STRIPE_KEY=*****
+
+push code to github and create github actions
+sign up to digital ocean
+
+kubectl uses contexts to run commnads, the default is to use the local machine context
+'brew install doctl' to use the digital Ocean CLI
