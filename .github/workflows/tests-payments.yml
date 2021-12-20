@@ -3,8 +3,8 @@ name: tests-payments
 # determine when to run this workflow
 on:
   pull_request:
-  paths:
-    - "payments/**"
+    paths:
+      - "payments/**"
 # specify the events that you want to run on the pull req
 jobs:
   build:
