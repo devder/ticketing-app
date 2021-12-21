@@ -13,7 +13,7 @@ run -> skaffold dev
 
 add the ingress-srv file, install ingress with
 # -> kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.0.0/deploy/static/
--> kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.0.4/deploy/static/provider/cloud/deploy.yaml
+-> kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.0/deploy/static/provider/cloud/deploy.yaml
 
 edit the /etc/hosts file with the host name you want in the ingress file (127.0.0.1 example.com)
 -> code /etc/hosts
